@@ -1,4 +1,4 @@
-package com.pushpak.cryptocurrency.ui.theme
+package com.pushpak.cryptocurrency.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
