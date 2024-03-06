@@ -43,7 +43,7 @@ data class CoinDetailDto(
     val whitepaper: Whitepaper
 )
 
-fun CoinDetailDto.details():CoinDetail{
+fun CoinDetailDto.toCoinDetail():CoinDetail{
     return CoinDetail(
         coinId = id,
         name= name,
