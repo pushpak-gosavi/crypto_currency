@@ -12,31 +12,31 @@ import javax.inject.Inject
 
 class CoinDetailViewModel @Inject constructor(
     private val getCoinUseCase: GetCoinUseCase,
-    stateHandle: SavedStateHandle
+    //stateHandle: SavedStateHandle
 ) : ViewModel() {
-    private val _state = mutableStateOf(CoinState())
-    val state: State<CoinState> = _state
-
-    init {
-        stateHandle.get<String>(Constants.GET_COIN_ID)?.let { getCoinById ->
-            getCoinDetail(getCoinById = getCoinById)
-        }
-    }
-
-    private fun getCoinDetail(getCoinById: String) {
-        getCoinUseCase(getCoinById).onEach { result ->
-            when (result) {
-                is Resource.Loading ->
-                    _state.value = CoinState(isLoading = true)
-
-                is Resource.Success ->
-                    _state.value = CoinState(data = result.data)
-
-                is Resource.Error ->
-                    _state.value = CoinState(
-                        isError = result.message ?: "Unexpected error occurred!"
-                    )
-            }
-        }
-    }
+//    private val _state = mutableStateOf(CoinDetailState())
+//    val state: State<CoinDetailState> = _state
+//
+//    init {
+//        stateHandle.get<String>(Constants.PARAM_COIN_ID)?.let { getCoinById ->
+//            getCoinDetail(getCoinById = getCoinById)
+//        }
+//    }
+//
+//    private fun getCoinDetail(getCoinById: String) {
+//        getCoinUseCase(getCoinById).onEach { result ->
+//            when (result) {
+//                is Resource.Loading ->
+//                    _state.value = CoinDetailState(isLoading = true)
+//
+//                is Resource.Success ->
+//                    _state.value = CoinDetailState(data = result.data)
+//
+//                is Resource.Error ->
+//                    _state.value = CoinDetailState(
+//                        isError = result.message ?: "Unexpected error occurred!"
+//                    )
+//            }
+//        }
+//    }
 }
