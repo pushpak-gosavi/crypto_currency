@@ -4,9 +4,11 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.pushpak.cryptocurrency.common.Resource
 import com.pushpak.cryptocurrency.domain.use_case.get_coins.GetCoinsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
@@ -35,6 +37,6 @@ class CoinListViewModel @Inject constructor(
                     _state.value = CoinListState(coins = result.data ?: emptyList())
 
             }
-        }
+        }.launchIn(viewModelScope)
     }
 }
